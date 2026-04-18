@@ -1,3 +1,4 @@
+#a function that returns a list where all the positive numbers are replaced with the string "big".
 def biggie_size(lst):
 
     for i in range(len(lst)):
@@ -5,6 +6,7 @@ def biggie_size(lst):
             lst[i] = "big"
     return lst
 print(biggie_size([-1, 3, 5, -5]))
+
 
 def count_positives(lst):
     count = 0
@@ -24,6 +26,7 @@ def sum_total(lst):
     return total
 print(sum_total([2,3,4]))
 
+
 def average(lst):
 
     if len(lst) == 0:
@@ -37,6 +40,7 @@ print(average([2,3,4]))
 def length(lst):
     return len(lst)
 print(length([2,3,4]))
+
 
 
 def minimum(lst):
