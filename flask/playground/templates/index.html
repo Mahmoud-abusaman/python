@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Playground</title>
+
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            margin: 10px;
+            border-radius: 3px;
+            border: 1px solid black;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Playground</h1>
+
+    {% for i in range(num) %}
+    <div class="box" style="background-color: {{ color }}"></div>
+    {% endfor %}
+
+</body>
+
+</html>
