@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey | Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="glass-card">
+            <h1>Submitted Info</h1>
+            <p class="subtitle">Thank you for your response!</p>
+            
+            <div class="result-info">
+                <div class="info-row">
+                    <span class="info-label">Name:</span>
+                    <span class="info-value">{{ session['name'] }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Dojo Location:</span>
+                    <span class="info-value">{{ session['location'] }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Favorite Language:</span>
+                    <span class="info-value">{{ session['language'] }}</span>
+                </div>
+                
+                <label style="margin-top: 24px; display: block;">Comments:</label>
+                <div class="comment-box">
+                    {{ session['comment'] if session['comment'] else 'No comments provided.' }}
+                </div>
+            </div>
+
+            <a href="/" class="back-link">← Go Back</a>
+        </div>
+    </div>
+</body>
+</html>
