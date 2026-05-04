@@ -20,15 +20,26 @@
       </header>
   
       <main role="main">
-  
+        <style>
+          .fruit-img {
+              max-width: 200px;
+              margin: 15px;
+              border-radius: 15px;
+              box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+              transition: transform 0.2s;
+          }
+          .fruit-img:hover {
+              transform: scale(1.05);
+          }
+        </style>
         <section class="jumbotron text-center">
           <div class="container">
             <h1 class="jumbotron-heading">Dojo Fruits</h1>
             <p>
-              <img src="{{ url_for('static', filename='img/apple.png') }}" alt="Apple">
-              <img src="{{ url_for('static', filename='img/blackberry.png') }}" alt="Blackberry">
-              <img src="{{ url_for('static', filename='img/raspberry.png') }}" alt="Raspberry">
-              <img src="{{ url_for('static', filename='img/strawberry.png') }}" alt="Strawberry">
+              <img class="fruit-img" src="{{ url_for('static', filename='img/apple.png') }}" alt="Apple">
+              <img class="fruit-img" src="{{ url_for('static', filename='img/blackberry.png') }}" alt="Blackberry">
+              <img class="fruit-img" src="{{ url_for('static', filename='img/raspberry.png') }}" alt="Raspberry">
+              <img class="fruit-img" src="{{ url_for('static', filename='img/strawberry.png') }}" alt="Strawberry">
             </p>
 
             <p>
