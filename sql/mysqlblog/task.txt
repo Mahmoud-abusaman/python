@@ -1,0 +1,25 @@
+
+we could have our erd like this:
+
+Users:
+    id: Bigint
+    name: varchar(255)
+    email: varchar(255)
+    password: varchar(255)
+    is_deleted: tinyint(1)
+
+Posts:
+    id:Bigint
+    title: varchar(255)
+    content: text
+    user_id: Bigint
+    post_date: datetime
+    is_deleted: tinyint(1)
+
+Comments:
+    id:Bigint
+    content: text
+    user_id: Bigint
+    post_id: Bigint
+    comment_date: datetime
+    is_deleted: tinyint(1)
