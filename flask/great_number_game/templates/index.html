@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Number Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .box {
+            width: 250px;
+            height: 250px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        .red-box {
+            background-color: #c92a2a;
+        }
+        .green-box {
+            background-color: #2b8a3e;
+        }
+        input[type="number"] {
+            padding: 5px;
+            font-size: 16px;
+            width: 100px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 6px 15px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Great Number Game!</h1>
+    <p>I am thinking of a number between 1 and 100</p>
+    <p>Take a guess!</p>
+
+    {% if status == 'high' %}
+        <div class="box red-box">
+            Too high!
+        </div>
+    {% elif status == 'low' %}
+        <div class="box red-box">
+            Too low!
+        </div>
+    {% elif status == 'correct' %}
+        <div class="box green-box">
+            <p>{{ session['target_num'] }} was the number!</p>
+            <a href="/reset"><button>Play again!</button></a>
+        </div>
+    {% endif %}
+
+    {% if status != 'correct' %}
+        <form action="/guess" method="POST">
+            <input type="number" name="guess" min="1" max="100" required><br>
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %}
+
+</body>
+</html>
