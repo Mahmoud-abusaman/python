@@ -1,0 +1,54 @@
+USERS:
+    id int PK
+    name varchar
+    email varchar
+    password varchar
+    created_at datetime
+    updated_at datetime
+
+BLOGS:
+    id int PK
+    name varchar
+    creator_id int FK [ref: > USERS.id]
+    created_at datetime
+    updated_at datetime
+
+BLOG_ADMINS:
+    id int PK
+    blog_id int FK [ref: > BLOGS.id]
+    user_id int FK [ref: > USERS.id]
+    created_at datetime
+    updated_at datetime
+
+POSTS:
+    id int PK
+    title varchar
+    content text
+    blog_id int FK [ref: > BLOGS.id]
+    author_id int FK [ref: > USERS.id]
+    created_at datetime
+    updated_at datetime
+
+COMMENTS:
+    id int PK
+    content text
+    post_id int FK [ref: > POSTS.id]
+    user_id int FK [ref: > USERS.id]
+    created_at datetime
+    updated_at datetime
+
+FILES:
+    id int PK
+    file_path varchar
+    post_id int FK [ref: > POSTS.id]
+    created_at datetime
+    updated_at datetime
+
+PAGE_VIEWS:
+    id int PK
+    user_id int FK [ref: > USERS.id]
+    page_visited_id int FK [ref: > BLOGS.id]
+    ip_address varchar
+    visited_at datetime
+    duration_seconds int
+    created_at datetime

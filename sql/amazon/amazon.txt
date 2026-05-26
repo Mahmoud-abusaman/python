@@ -1,0 +1,18 @@
+Product:
+  id int [pk]
+  name varchar
+  description text
+  price decimal
+  brand_id int [ref: > Brand.id] [FK]
+  category_id int [ref: > Category.id] [FK]
+
+
+Brand:
+  id int [pk]
+  name varchar
+
+
+Category:
+  id int [pk]
+  name varchar
+

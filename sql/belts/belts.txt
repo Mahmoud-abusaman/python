@@ -1,0 +1,18 @@
+USERS:
+    id int PK
+    name varchar
+    created_at datetime
+    updated_at datetime
+
+BELTS:
+    id int PK
+    color varchar
+    created_at datetime
+    updated_at datetime
+
+USER_BELTS:
+    id int PK
+    user_id int FK [ref: > USERS.id]
+    belt_id int FK [ref: > BELTS.id]
+    created_at datetime
+    updated_at datetime

@@ -1,0 +1,21 @@
+USERS:
+    id int PK
+    first_name varchar
+    last_name varchar
+    email varchar
+    created_at datetime
+    updated_at datetime
+
+BOOKS:
+    id int PK
+    title varchar
+    author varchar
+    created_at datetime
+    updated_at datetime
+
+FAVORITE_BOOKS:
+    id int PK
+    user_id int FK [ref: > USERS.id]
+    book_id int FK [ref: > BOOKS.id]
+    created_at datetime
+    updated_at datetime

@@ -1,0 +1,38 @@
+DOJOS:
+    id int PK
+    name varchar
+    city varchar
+    state varchar
+    created_at datetime
+    updated_at datetime
+
+STUDENTS:
+    id int PK
+    dojo_id int FK [ref: > DOJOS.id]
+    first_name varchar
+    last_name varchar
+    created_at datetime
+    updated_at datetime
+
+ADDRESSES:
+    id int PK
+    student_id int FK [ref: - STUDENTS.id]
+    address_line1 varchar
+    address_line2 varchar
+    city varchar
+    state varchar
+    created_at datetime
+    updated_at datetime
+
+INTERESTS:
+    id int PK
+    name varchar
+    created_at datetime
+    updated_at datetime
+
+STUDENT_INTERESTS:
+    id int PK
+    student_id int FK [ref: > STUDENTS.id]
+    interest_id int FK [ref: > INTERESTS.id]
+    created_at datetime
+    updated_at datetime
