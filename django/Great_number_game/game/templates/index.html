@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great number Game</title>
+</head>
+<body>
+    <h1>Great number Game</h1>
+    <p>Guess the number between 1 and 100</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="number" name="guess" id="guess">
+        <button type="submit">Guess</button>
+    </form>
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    {% if message == 'You guessed the number!' %}
+        <a href="/reset">play again</a>
+    {% endif %}
+</body>
+</html>
