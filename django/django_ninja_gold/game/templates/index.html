@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ninja Gold</h1>
+    <p>Your Gold: {{ request.session.gold }}</p>
+    <form action="/process_money" method="post">
+        {% csrf_token %}
+        <h1>farm</h1>
+        <input type="hidden" name="location" value="farm">
+        <button type="submit">{{dictionary.farm.start}} - {{dictionary.farm.end}}</button>
+    </form>
+    <form action="/process_money" method="post">
+        {% csrf_token %}
+        <h1>cave</h1>
+        <input type="hidden" name="location" value="cave">
+        <button type="submit">{{dictionary.cave.start}} - {{dictionary.cave.end}}</button>
+    </form>
+    <form action="/process_money" method="post">
+        {% csrf_token %}
+        <h1>house</h1>
+        <input type="hidden" name="location" value="house">
+        <button type="submit">{{dictionary.house.start}} - {{dictionary.house.end}}</button>
+    </form>
+    <form action="/process_money" method="post">
+        {% csrf_token %}
+        <h1>casino</h1>
+        <input type="hidden" name="location" value="casino">
+        <button type="submit">{{dictionary.casino.start}} - {{dictionary.casino.end}}</button>
+    </form>
+    
+
+
+    <div class="activities">
+        {% for activity in request.session.activities %}
+            <p>{{activity}}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
