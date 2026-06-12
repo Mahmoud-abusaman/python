@@ -40,5 +40,9 @@
             <p>{{activity}}</p>
         {% endfor %}
     </div>
+    <form action="{% url 'reset' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Reset</button>
+    </form>
 </body>
 </html>

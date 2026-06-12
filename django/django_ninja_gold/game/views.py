@@ -37,3 +37,7 @@ def process_money(request):
             request.session['gold'] += num
             request.session['activities'].append(f'You earned {num} gold from the casino')
     return redirect('index')
+
+def reset(request):
+    request.session.flush()
+    return redirect('index')
