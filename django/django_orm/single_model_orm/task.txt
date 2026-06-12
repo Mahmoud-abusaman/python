@@ -1,0 +1,42 @@
+Python 3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> User.objects.creat(t
+timezone  try:      tuple(    type      
+>>> User.objects.creat(fi
+filter(   finally:  
+>>> User.objects.creat(first_name="mah",last_name="sama", email="m@m.com",age=22)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Manager' object has no attribute 'creat'. Did you mean: 'create'?
+>>> User.objects.create(first_name="mah",last_name="sama", email="m@m.com",age=22)
+<User: User object (1)>
+>>> User.objects.create(first_name="mah2",last_name="sama", email="m2@m.com",age=22)
+<User: User object (2)>
+>>> User.objects.create(first_name="mah3",last_name="sama", email="m3@m.com",age=22)
+<User: User object (3)>
+>>> User.objects.all()
+<QuerySet [<User: User object (1)>, <User: User object (2)>, <User: User object (3)>]>
+>>> User.objects.latest("created_at)
+  File "<console>", line 1
+    User.objects.latest("created_at)
+                        ^
+SyntaxError: unterminated string literal (detected at line 1)
+>>> User.objects.latest("created_at")
+<User: User object (3)>
+>>> User.objects.first()
+<User: User object (1)>
+>>> usertoUpdate=User.objects.get(id=3)
+>>> usertoUpdate.first_name="pancke"
+>>> usertoUpdate.save()
+>>> User.objects.get(id=3).first_name
+'pancke'
+>>> User.objects.delete(id=2)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Manager' object has no attribute 'delete'
+>>> User.objects.get(id=2).delete()
+(1, {'users_app.User': 1})
+>>> User.objects.all()
+<QuerySet [<User: User object (1)>, <User: User object (3)>]>
+>>> exit()
