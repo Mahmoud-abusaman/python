@@ -1,0 +1,74 @@
+
+Python 3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from dojo_ninjas_app.models import Dojo,Ninja
+>>> Dojo.objects.create(name="A", city="A", state="A")
+<Dojo: Dojo object (8)>
+>>> Dojo.objects.create(name="B", city="A", state="A")
+<Dojo: Dojo object (9)>
+>>> Dojo.objects.create(name="C", city="A", state="A")
+<Dojo: Dojo object (10)>
+>>> Dojo.objects.all().delete()
+(3, {'dojo_ninjas_app.Dojo': 3})
+>>> Dojo.objects.create(name="A", city="A", state="A")
+<Dojo: Dojo object (11)>
+>>> Dojo.objects.create(name="B", city="A", state="A")
+<Dojo: Dojo object (12)>
+>>> Dojo.objects.create(name="C", city="A", state="A")
+<Dojo: Dojo object (13)>
+>>> Ninja.objects.creat( first_name="Ninja 1", last_name="A",dojo=Dojo.objects.first())
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Manager' object has no attribute 'creat'. Did you mean: 'create'?
+>>> Ninja.objects.create( first_name="Ninja 1", last_name="A",dojo=Dojo.objects.first())
+<Ninja: Ninja object (10)>
+>>> Ninja.objects.create( first_name="Ninja 2", last_name="A",dojo=Dojo.objects.first())
+<Ninja: Ninja object (11)>
+>>> Ninja.objects.create( first_name="Ninja 3", last_name="A",dojo=Dojo.objects.first())
+<Ninja: Ninja object (12)>
+>>> second_dojo=Dojo.objects.get(name="B")
+>>> Ninja.objects.create( first_name="Ninja 4", last_name="A",dojo=second_dojo)
+<Ninja: Ninja object (13)>
+>>> Ninja.objects.create( first_name="Ninja 5", last_name="A",dojo=second_dojo)
+<Ninja: Ninja object (14)>
+>>> Ninja.objects.create( first_name="Ninja 6", last_name="A",dojo=second_dojo)
+<Ninja: Ninja object (15)>
+>>> Ninja.objects.create( first_name="Ninja 7", last_name="A",dojo=Dojo.objects.last())
+<Ninja: Ninja object (16)>
+>>> Ninja.objects.create( first_name="Ninja 8", last_name="A",dojo=Dojo.objects.last())
+<Ninja: Ninja object (17)>
+>>> Ninja.objects.create( first_name="Ninja 9", last_name="A",dojo=Dojo.objects.last())
+<Ninja: Ninja object (18)>
+>>> Dojo.
+Dojo.DoesNotExist(                Dojo.get_next_by_updated_at(
+Dojo.MultipleObjectsReturned(     Dojo.get_previous_by_created_at(
+Dojo.NotUpdated(                  Dojo.get_previous_by_updated_at(
+Dojo.add_to_class(                Dojo.id
+Dojo.adelete(                     Dojo.mro()
+Dojo.arefresh_from_db(            Dojo.name
+Dojo.asave(                       Dojo.ninjas
+Dojo.check(                       Dojo.objects
+Dojo.city                         Dojo.pk
+Dojo.clean(                       Dojo.prepare_database_save(
+Dojo.clean_fields(                Dojo.refresh_from_db(
+Dojo.created_at                   Dojo.save(
+Dojo.date_error_message(          Dojo.save_base(
+Dojo.delete(                      Dojo.serializable_value(
+Dojo.desc                         Dojo.state
+Dojo.from_db(                     Dojo.unique_error_message(
+Dojo.full_clean(                  Dojo.updated_at
+Dojo.get_constraints(             Dojo.validate_constraints(
+Dojo.get_deferred_fields(         Dojo.validate_unique(
+Dojo.get_next_by_created_at(      
+>>> Dojo.objects.first().ninjas
+<django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager object at 0x77ddeccd2000>
+>>> Dojo.objects.first().ninjas.all()
+<QuerySet [<Ninja: Ninja object (10)>, <Ninja: Ninja object (11)>, <Ninja: Ninja object (12)>]>
+>>> second_dojo.ninjas.all()
+<QuerySet [<Ninja: Ninja object (13)>, <Ninja: Ninja object (14)>, <Ninja: Ninja object (15)>]>
+>>> Dojo.objects.last().ninjas.all()
+<QuerySet [<Ninja: Ninja object (16)>, <Ninja: Ninja object (17)>, <Ninja: Ninja object (18)>]>
+>>> Ninja.objects.last().dojo
+<Dojo: Dojo object (13)>
+>>> 
