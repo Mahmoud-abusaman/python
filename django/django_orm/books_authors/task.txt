@@ -1,0 +1,50 @@
+
+Python 3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from "app.models" import Book,Author
+  File "<console>", line 1
+    from "app.models" import Book,Author
+         ^^^^^^^^^^^^
+SyntaxError: invalid syntax
+>>> from app.models import Book,Author
+>>> Book.objects.create(title="csharp",description="sss")
+<Book: Book object (1)>
+>>> Book.objects.create(title="java",description="sss")
+<Book: Book object (2)>
+>>> Book.objects.create(title="python",description="sss")
+<Book: Book object (3)>
+>>> Book.objects.create(title="php",description="sss")
+<Book: Book object (4)>
+>>> Book.objects.create(title="ruby",description="sss")
+<Book: Book object (5)>
+>>> Author.objects.create(first_name="1",last_name="1")
+<Author: Author object (1)>
+>>> Author.objects.create(first_name="2",last_name="1")
+<Author: Author object (2)>
+>>> Author.objects.create(first_name="3",last_name="1")
+<Author: Author object (3)>
+>>> Author.objects.create(first_name="4",last_name="1")
+<Author: Author object (4)>
+>>> Author.objects.create(first_name="5",last_name="1")
+<Author: Author object (5)>
+
+
+Python 3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from app.models import Book,Author
+>>> fourth=Author.objects.get(first_name='4')
+>>> fourth.first_name="fourth"
+>>> fourth.save()
+>>> fourth.books.add(*Book.objects.all())
+>>> fourth.books.all()
+<QuerySet [<Book: Book object (1)>, <Book: Book object (2)>, <Book: Book object (3)>, <Book: Book object (4)>, <Book: Book object (5)>]>
+>>> Book.objects.get(title="python").authors.all()
+<QuerySet [<Author: Author object (2)>, <Author: Author object (3)>, <Author: Author object (4)>]>
+>>> thirdbook=Book.objects.get(title="python")
+>>> thirdbook.authors.remove(thirdbook.authors.first())
+>>> thirdbook.authors.all()
+<QuerySet [<Author: Author object (3)>, <Author: Author object (4)>]>
+>>> Author.objects.get(first_name="3").books.all()
+<QuerySet [<Book: Book object (1)>, <Book: Book object (2)>, <Book: Book object (3)>, <Book: Book object (4)>]>
