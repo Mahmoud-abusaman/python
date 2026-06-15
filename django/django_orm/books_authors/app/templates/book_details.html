@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }}</title>
+</head>
+<body>
+    
+    <h1> ID: {{book.id}} | Title: {{ book.title }}</h1>
+    <p>Description: {{book.description}}</p>
+    <p>Authors:</p>
+    <ul>
+    {% for author in book.authors.all %}
+        <li><a href="{% url 'author_detail' author.id %}">{{ author.first_name }} {{ author.last_name }}</a></li>
+    {% empty %}
+        <p>No authors found</p>
+    {% endfor %}
+    </ul>
+
+    <form action="{% url 'add_author' book.id %}" method="post">
+        {% csrf_token %}
+        <select name="author_id" id="author_id">
+            {% for author in authors %}
+                {% if author not in book.authors.all %}
+                    <option value="{{ author.id }}">{{ author.first_name }} {{ author.last_name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <button type="submit">Add Author</button>
+    </form>
+</body>
+</html>

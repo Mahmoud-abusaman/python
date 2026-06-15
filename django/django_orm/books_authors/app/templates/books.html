@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+</head>
+<body>
+    <div style="display: flex; justify-content: space-between; gap: 20px;">
+        <div style="flex: 1;display: flex; flex-direction: column;">
+            <h1>Add Book</h1>
+            <form action="/books/" method="post" style="display: flex; flex-direction: column;">
+                {% csrf_token %}
+                <input type="text" name="title" placeholder="Title">
+                <textarea name="description" placeholder="Description"></textarea>
+                <button type="submit">Add Book</button>
+            </form>
+        </div>
+        <div style="flex: 1;display: flex; flex-direction: column;">
+            <h1>Books</h1>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in books %}
+                    <tr>
+                        <td>{{ book.id }}</td>
+                        <td>{{ book.title }}</td>
+                        <td><a href="/books/{{ book.id }}">View</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

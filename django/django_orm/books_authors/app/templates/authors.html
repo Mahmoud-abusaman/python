@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title>
+</head>
+<body>
+    <div style="display: flex; justify-content: center; gap: 10px;">
+        <div style="flex-direction: column; flex: 1;">
+            <h1>Add Author</h1> 
+            <form action="/authors/" method="post">
+                {% csrf_token %}
+                <input type="text" name="first_name" placeholder="First Name">
+                <input type="text" name="last_name" placeholder="Last Name">
+            <button type="submit">Add Author</button>
+        </form>
+    </div>
+        <div style="flex: 1; display: flex; flex-direction: column;">
+            <h1>Authors</h1>
+            <ul>
+                {% for author in authors %}
+                    <li><a href="/authors/{{ author.id }}">{{ author.first_name }} {{ author.last_name }}</a></li>
+                {% empty %}
+                    <li>No authors found</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <a href="/books">Back to Books</a>
+</body>
+</html>
