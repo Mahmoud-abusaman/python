@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments - {{ course.name }}</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .comment-box { border-bottom: 1px solid #eee; padding: 10px 0; }
+        form { margin-bottom: 30px; }
+        textarea { width: 100%; max-width: 500px; display: block; margin-bottom: 10px; }
+        button { background: #007bff; color: white; padding: 10px; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <a href="/">Back to Dashboard</a>
+    <h1>Comments for {{ course.name }}</h1>
+    
+    <form action="/courses/{{ course.id }}/comments" method="post">
+        {% csrf_token %}
+        <textarea name="content" rows="4" placeholder="Write a comment..."></textarea>
+        <button type="submit">Submit Comment</button>
+    </form>
+
+    <h2>All Comments</h2>
+    {% for comment in comments %}
+    <div class="comment-box">
+        <p>{{ comment.content }}</p>
+        <small>{{ comment.created_at }}</small>
+    </div>
+    {% empty %}
+    <p>No comments yet.</p>
+    {% endfor %}
+</body>
+</html>

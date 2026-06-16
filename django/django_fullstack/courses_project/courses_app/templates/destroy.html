@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Course</title>
+    <style>
+        body { font-family: sans-serif; margin: 50px; }
+        .container { border: 1px solid #000; padding: 20px; max-width: 600px; text-align: center; }
+        .danger { color: red; font-weight: bold; }
+        .btn-group { margin-top: 20px; }
+        .btn-no { background: #ccc; padding: 10px 20px; text-decoration: none; color: black; margin-right: 10px; }
+        .btn-yes { background: #b00; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Are you sure you want to delete the following course?</h1>
+        <p><strong>Name:</strong> {{ course.name }}</p>
+        <p><strong>Description:</strong> {{ course.description.content }}</p>
+        
+        <div class="btn-group">
+            <a href="/" class="btn-no">No</a>
+            <form action="/courses/delete/{{ course.id }}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn-yes">Yes! I want to delete this</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
