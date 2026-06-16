@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Course, Description, Comment
 
-# Create your views here.
 def index(request):
     context = {
         "all_courses": Course.objects.all()
@@ -17,9 +16,7 @@ def create(request):
                 messages.error(request, value)
             return redirect('/')
         else:
-            # Create Description first
             new_desc = Description.objects.create(content=request.POST['description'])
-            # Create Course and link to Description
             Course.objects.create(name=request.POST['name'], description=new_desc)
             messages.success(request, "Course successfully added!")
             return redirect('/')
